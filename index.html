@@ -518,6 +518,52 @@ The platform integrates staking with liquidity growth to create a balanced envir
 
 </section>
 
+ <section class="section">
+
+<h2 class="goldTitle">
+<i class="fa-solid fa-chart-line icon"></i>
+DMX Future Growth Vision
+</h2>
+
+<p class="subText">
+DimeX is built with a strong focus on liquidity growth.  
+As liquidity increases, market strength improves — creating a natural path for long-term price growth.
+</p>
+
+<div class="glassCard">
+
+<ul class="tick">
+<li>Strong liquidity foundation before expansion</li>
+<li>Controlled and structured growth model</li>
+<li>Community-driven ecosystem scaling</li>
+<li>Long-term sustainability approach</li>
+</ul>
+
+</div>
+
+<canvas id="growthChart" style="max-width:100%;margin-top:30px;"></canvas>
+
+<div class="goldBox" style="margin-top:20px;">
+
+<b class="goldHead">Growth Expectation</b>
+
+<p>
+In the early stage, liquidity buildup plays a key role in stabilizing the token.  
+As adoption increases, demand strengthens — supporting upward price movement.
+</p>
+
+<p>
+This model focuses on steady and sustainable growth rather than short-term spikes.
+</p>
+
+</div>
+
+<p style="font-size:12px;color:#888;margin-top:10px;">
+* This is a projected growth illustration based on ecosystem expansion and liquidity development.
+</p>
+
+ </section> 
+
 <!-- PROJECT OVERVIEW -->
 <section class="section" style="padding:0;">
   <div class="fullBanner">
@@ -1261,7 +1307,58 @@ document.getElementById("dailyReward").innerText = daily.toFixed(2);
 document.getElementById("totalReward").innerText = total.toFixed(2);
 
   }  
-  
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+window.addEventListener("load", () => {
+
+const ctx2 = document.getElementById('growthChart');
+
+if(!ctx2) return;
+
+new Chart(ctx2, {
+type: 'line',
+data: {
+labels: [
+'Launch',
+'1 Month',
+'3 Months',
+'6 Months',
+'9 Months',
+'12 Months'
+],
+datasets: [{
+label: 'Projected Growth',
+data: [0.001, 0.003, 0.008, 0.02, 0.05, 0.1],
+borderColor: '#00ff99',
+backgroundColor: 'rgba(0,255,153,0.08)',
+tension: 0.45,
+fill: true,
+pointRadius: 4,
+pointBackgroundColor: '#00ff99'
+}]
+},
+options: {
+responsive: true,
+plugins: {
+legend: {
+labels: { color: '#fff' }
+}
+},
+scales: {
+x: {
+ticks: { color: '#aaa' }
+},
+y: {
+ticks: { color: '#aaa' }
+}
+}
+}
+});
+
+});
 </script>
+
 </body>
 </html>
