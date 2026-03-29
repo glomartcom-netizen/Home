@@ -403,6 +403,41 @@ font-size:13px;
   .heroText .btn{
 margin:10px;
   }
+  
+/* BUTTON GROUP CENTER */
+.btnGroup{
+display:flex;
+flex-direction:column;   
+align-items:center;
+gap:15px;
+}
+
+/* MAIN DASHBOARD BUTTON */
+.mainBtn{
+background:gold;
+color:#000;
+min-width:220px;
+}
+
+/* INSTALL BUTTON (🔥 PREMIUM PINK) */
+.installBtn{
+background:linear-gradient(45deg,#ff4ecd,#ff0080);
+color:#fff;
+min-width:220px;
+box-shadow:0 0 15px rgba(255,0,128,0.6);
+}
+
+/* BUTTON SIZE FIX */
+.btn{
+padding:16px 28px;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+font-size:15px;
+text-align:center;
+  }
+  
 </style>
 </head>
 
@@ -442,10 +477,14 @@ src="https://raw.githubusercontent.com/glomartcom-netizen/DimeXtest/main/mobiles
 </div>   <!-- slider end -->
   
 <div class="heroText">
-<button class="btn" onclick="enter()">ENTER DASHBOARD</button>
 
-<!-- 🔥 NEW INSTALL BUTTON -->
-<button class="btn" onclick="installApp()">INSTALL APP</button>
+<div class="btnGroup">
+<button class="btn mainBtn" onclick="enter()">ENTER DASHBOARD</button>
+
+<button class="btn installBtn" onclick="installApp()">
+📲 INSTALL APP
+</button>
+</div>
 
 </div>
 
