@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DimeX</title>
 
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#38bdf8">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -397,6 +400,9 @@ cursor:pointer;
 font-size:13px;
   }
 .footer{text-align:center;padding:25px;color:#777;}
+  .heroText .btn{
+margin:10px;
+  }
 </style>
 </head>
 
@@ -437,12 +443,16 @@ src="https://raw.githubusercontent.com/glomartcom-netizen/DimeXtest/main/mobiles
   
 <div class="heroText">
 <button class="btn" onclick="enter()">ENTER DASHBOARD</button>
+
+<!-- 🔥 NEW INSTALL BUTTON -->
+<button class="btn" onclick="installApp()">INSTALL APP</button>
+
 </div>
-  
+
 <div class="ticker">
 <span id="tickerText">Loading crypto market...</span>
 </div>
-
+  
 <!-- INTRO STATEMENT -->
 <section class="section">
 
@@ -1058,7 +1068,45 @@ if(loader){
   },1200);
 }
 
-});   <!-- THIS closes window load -->
+});   
+
+// 🔥 PWA INSTALL SUPPORT
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  console.log("Install ready");
+});
+
+// 🔥 INSTALL FUNCTION
+function installApp(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if(choiceResult.outcome === 'accepted'){
+        console.log("User installed app");
+      } else {
+        console.log("User cancelled install");
+      }
+      deferredPrompt = null;
+    });
+
+  } else {
+    alert("Install not available yet. Try again later.");
+  }
+}
+
+// 🔥 SERVICE WORKER REGISTER
+window.addEventListener("load", () => {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+    .then(() => console.log("Service Worker Registered"))
+    .catch(() => console.log("SW Failed"));
+  }
+});
+  
 </script>
 </body>
 </html>
