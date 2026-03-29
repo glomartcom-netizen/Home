@@ -682,7 +682,7 @@ Minimum Stake : <b class="gold">2500 DMX</b>
 
 <div class="row">
 <i class="fa-solid fa-coins smallIcon"></i>
-Minimum Restake : <b class="gold">2500 DMX +5% Bonus</b>
+Minimum Restake : <b class="gold">2500 DMX + 5% Bonus</b>
 </div>
 
 <div class="row">
@@ -718,14 +718,76 @@ Minimum Claim : <b class="gold">100 DMX</b>
 
 </div>
 
-<!-- return note -->
+<!-- RETURN POLICY -->
 <div class="underInfo goldBox" style="margin-top:14px;">
 <b class="goldHead">Staking Return Policy</b><br>
+
 ✔ After each staking duration ends, your staked <b class="gold">DMX</b> will be returned to your wallet.<br>
+
 ✔ Staking rewards are paid daily in <b class="gold">DMX</b> and can be claimed anytime.
+
+</div>
+
+<!-- PAYMENT & CLAIM OPTIONS -->
+<div class="underInfo goldBox" style="margin-top:14px;">
+
+<b class="goldHead">Payment & Claim Options</b>
+
+<ul class="infoList">
+
+<li>
+<b>Staking Mode:</b><br>
+✔ Stake using <span class="gold">DMX</span><br>
+✔ Stake using <span class="gold">USDT (Converted to DMX Value)</span>
+</li>
+
+<li>
+<b>Reward System:</b><br>
+All rewards are generated in <span class="gold">DMX</span>
+</li>
+
+<li>
+<b>Claim Options:</b><br>
+✔ Claim in <span class="gold">DMX (Direct)</span><br>
+✔ Claim in <span class="gold">USDT (Auto Converted)</span>
+</li>
+
+<li>
+<b>Flexibility:</b><br>
+Users can choose claim type anytime based on their strategy
+</li>
+
+</ul>
+
 </div>
 
 </section>
+
+  <div class="underInfo goldBox" style="margin-top:14px;">
+
+<b class="goldHead">Reward Calculator</b>
+
+<input id="stakeAmount"
+type="number"
+placeholder="Enter DMX amount"
+class="contractInput">
+
+<select id="stakeDays" class="contractInput">
+<option value="90">90 Days (0.20%)</option>
+<option value="180">180 Days (0.25%)</option>
+<option value="365">365 Days (0.30%)</option>
+</select>
+
+<button onclick="calcReward()" class="copyBtn" style="margin-top:10px;">
+Calculate
+</button>
+
+<div style="margin-top:10px;">
+Daily: <span id="dailyReward" class="gold">0</span> DMX<br>
+Total: <span id="totalReward" class="gold">0</span> DMX
+</div>
+
+  </div>
 
 
 <!-- DIRECT REFERRAL -->
@@ -1175,6 +1237,30 @@ window.addEventListener("load", () => {
     .catch(() => console.log("SW Failed"));
   }
 });
+
+function calcReward(){
+
+const amt = parseFloat(document.getElementById("stakeAmount").value);
+const days = parseInt(document.getElementById("stakeDays").value);
+
+if(!amt){
+alert("Enter amount");
+return;
+}
+
+let rate = 0;
+
+if(days === 90) rate = 0.002;
+if(days === 180) rate = 0.0025;
+if(days === 365) rate = 0.003;
+
+const daily = amt * rate;
+const total = daily * days;
+
+document.getElementById("dailyReward").innerText = daily.toFixed(2);
+document.getElementById("totalReward").innerText = total.toFixed(2);
+
+  }  
   
 </script>
 </body>
