@@ -1092,34 +1092,46 @@ Smart Contracts
 </h2>
 
 <!-- DMX TOKEN -->
-<h3 class="goldTitle">DMX Token Contract</h3>
-<input value="Coming after deploy" readonly class="contractInput">
+<h3 class="goldTitle">DMX Token Contract</h3>  
+<input id="dmxAddress" 
+value="0x0eb5dc6af3dbd9f6d10f50c363b61c8714f497e6" 
+readonly class="contractInput">  
 
-<div class="contractActions">
-<a class="scanBtn">🔗 View on BscScan</a>
-<button class="copyBtn">📋 Copy</button>
-</div>
+<div class="contractActions">  
+<a href="https://bscscan.com/address/0x0eb5dc6af3dbd9f6d10f50c363b61c8714f497e6" 
+target="_blank" class="scanBtn">🔗 View on BscScan</a>  
+
+<button onclick="copyText('dmxAddress')" class="copyBtn">📋 Copy</button>  
+</div>  
+
 
 <!-- STAKING -->
-<h3 class="goldTitle" style="margin-top:25px;">Staking Contract</h3>
-<input value="Coming after deploy" readonly class="contractInput">
+<h3 class="goldTitle" style="margin-top:25px;">Staking Contract</h3>  
+<input id="stakeAddress" 
+value="0xd1ec4e1b4fa0ff9714648590baf00748d3a4e4a3" 
+readonly class="contractInput">  
 
-<div class="contractActions">
-<a class="scanBtn">🔗 View on BscScan</a>
-<button class="copyBtn">📋 Copy</button>
-</div>
+<div class="contractActions">  
+<a href="https://bscscan.com/address/0xd1ec4e1b4fa0ff9714648590baf00748d3a4e4a3" 
+target="_blank" class="scanBtn">🔗 View on BscScan</a>  
+
+<button onclick="copyText('stakeAddress')" class="copyBtn">📋 Copy</button>  
+</div>  
+
 
 <!-- LP -->
-<h3 class="goldTitle" style="margin-top:25px;">Liquidity Pair (LP)</h3>
-<input value="Will appear after liquidity added" readonly class="contractInput">
+<h3 class="goldTitle" style="margin-top:25px;">Liquidity Pair (LP)</h3>  
+<input id="lpAddress" 
+value="0x181a45e81720300285be2f94a48b06a8115937d8" 
+readonly class="contractInput">  
 
-<div class="contractActions">
-<a class="scanBtn">🔗 View on BscScan</a>
-<button class="copyBtn">📋 Copy</button>
-</div>
+<div class="contractActions">  
+<a href="https://bscscan.com/address/0x181a45e81720300285be2f94a48b06a8115937d8" 
+target="_blank" class="scanBtn">🔗 View on BscScan</a>  
 
+<button onclick="copyText('lpAddress')" class="copyBtn">📋 Copy</button>  
 </div>
-</div>  
+</div>
   
 <!-- FUTURE OUTLOOK -->
 <section class="section">
@@ -1168,12 +1180,12 @@ CONTACT
 
 <p>
 <i class="fa-solid fa-envelope icon"></i>
-<a href="mailto:info@dimex.app">info@dimex.world</a>
+<a href="mailto:info@dimex.world">info@dimex.world</a>
 </p>
 
 <p>
 <i class="fa-solid fa-globe icon"></i>
-<a href="https://dimex.app">www.dimex.world</a>
+<a href="https://dimex.world">www.dimex.world</a>
 </p>
 
 </div>
@@ -1360,6 +1372,23 @@ ticks: { color: '#aaa' }
 });
 
 });
+
+function copyText(id){
+    const el = document.getElementById(id);
+    navigator.clipboard.writeText(el.value);
+
+    // smooth message
+    const msg = document.getElementById("txMessageBox");
+    if(msg){
+        msg.style.display = "block";
+        msg.innerText = "Copied successfully";
+
+        setTimeout(()=>{
+            msg.style.display = "none";
+        },1500);
+    }
+  }  
+  
 </script>
 
 </body>
